@@ -58,3 +58,7 @@ In case of using the H2 database, we have an UI for it: http://localhost:8080/h2
 - [ ] use Jenkins/Gitlab (for CI/CD)
 - [ ] support API versioning
 - [ ] support HATEOAS?
+
+Optimization ideas:
+- generate all the tickets and update only some fields (e.g.: email and reserved status)
+- use Redis (which supports persistence and transactions)
