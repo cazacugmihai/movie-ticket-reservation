@@ -65,8 +65,29 @@ Optimization ideas:
 
 ### Benchmark
 
+Steps:
+
+1. Update the value of `hall.seats` to `2000000`. 
+
+2. Create the `create.json` file:
+
+    ```json
+    {
+        "email": "john.doe@gmail.com",
+        "movieId": 1,
+        "seats": 1
+    }
+    ```
+
+3. Run the benchmark (a couple of times for warming up the JVM):
+
+    ```text
+    ❯❯❯ ab -p create.json -T application/json -c 10 -n 2000 http://localhost:8080/reservations
+    ```
+
+The result on my machine:
+
 ```text
-❯❯❯ ab -p create.json -T application/json -c 10 -n 2000 http://localhost:8080/reservations
 This is ApacheBench, Version 2.3 <$Revision: 1843412 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -90,38 +111,37 @@ Server Hostname:        localhost
 Server Port:            8080
 
 Document Path:          /reservations
-Document Length:        117 bytes
+Document Length:        16 bytes
 
 Concurrency Level:      10
-Time taken for tests:   0.729 seconds
+Time taken for tests:   0.613 seconds
 Complete requests:      2000
 Failed requests:        0
-Non-2xx responses:      2000
-Total transferred:      444000 bytes
-Total body sent:        424000
-HTML transferred:       234000 bytes
-Requests per second:    2745.31 [#/sec] (mean)
-Time per request:       3.643 [ms] (mean)
-Time per request:       0.364 [ms] (mean, across all concurrent requests)
-Transfer rate:          595.17 [Kbytes/sec] received
-                        568.37 kb/s sent
-                        1163.54 kb/s total
+Total transferred:      242000 bytes
+Total body sent:        420000
+HTML transferred:       32000 bytes
+Requests per second:    3264.34 [#/sec] (mean)
+Time per request:       3.063 [ms] (mean)
+Time per request:       0.306 [ms] (mean, across all concurrent requests)
+Transfer rate:          385.73 [Kbytes/sec] received
+                        669.44 kb/s sent
+                        1055.17 kb/s total
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   0.1      0       2
-Processing:     1    3   2.1      3      22
-Waiting:        0    2   1.6      2      20
-Total:          1    4   2.1      3      22
+Connect:        0    0   0.1      0       1
+Processing:     1    3   1.4      3      27
+Waiting:        1    2   1.3      2      16
+Total:          1    3   1.4      3      27
 
 Percentage of the requests served within a certain time (ms)
   50%      3
-  66%      4
-  75%      4
-  80%      5
-  90%      6
-  95%      8
-  98%     10
-  99%     12
- 100%     22 (longest request)
+  66%      3
+  75%      3
+  80%      4
+  90%      5
+  95%      6
+  98%      7
+  99%      8
+ 100%     27 (longest request)
 ```
