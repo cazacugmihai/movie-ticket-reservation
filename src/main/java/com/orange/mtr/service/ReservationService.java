@@ -14,7 +14,7 @@ public interface ReservationService {
      * Creates a reservation based on the input data.
      * <p>
      * The request is validated (the existence of the specified movie, the availability of the requested number of
-     * seats, etc.) and, in there are no errors, the reservation is persisted and the available number of seats is
+     * seats, etc.) and, if there are no errors, the reservation is persisted and the available number of seats is
      * updated accordingly.
      *
      * @param movieId the movie ID

@@ -6,6 +6,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The reservation request sent by the client.
+ *
+ * @see ReservationResponse
+ */
 @Value
 public class ReservationRequest {
 

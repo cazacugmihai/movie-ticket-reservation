@@ -52,7 +52,7 @@ public class ReservationController {
         val reservation = reservationService.createReservation(
                 request.getEmail(), request.getMovieId(), request.getSeats());
 
-        // we can use a  generated reservation code but, for simplicity, we'll return the entity ID
+        // we can use a generated reservation code but, for simplicity, we'll return the entity ID
         return new ReservationResponse(reservation.getId().toString());
     }
 
